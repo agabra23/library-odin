@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+
+:root {
+  font-size: 10px;
+  font-family: "Source Sans Pro", sans-serif;
+
+  --purple-500: #6200ee;
+  --purple-700: #3700b3;
+  --teal-secondary: #03dac5;
+  --primary-dark: #333;
+  --primary-light: #eee;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+* {
+  border: none;
+  margin: 0;
+}
+
+menu:not(article menu),
+ol:not(article ol),
+ul:not(article ul) {
+  list-style: none;
+}
+
+menu,
+ol,
+ul {
+  padding-left: 0;
+}
+
+html {
+  -webkit-text-size-adjust: none; /* for iOS Safari */
+  text-size-adjust: none; /* for other mobile browsers */
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: var(--primary-light);
+}
+
+.plus-button {
+  color: var(--primary-light);
+  cursor: pointer;
+}
+
+header {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--purple-500);
+  box-shadow: 6px 0px 6px 6px rgb(0, 0, 0, 0.3);
+}
+
+footer {
+  background-color: var(--primary-light);
+  padding: 2rem;
+  box-shadow: 6px 0px 6px 6px rgb(0, 0, 0, 0.2);
+}
+
+footer p {
+  color: var(--primary-dark);
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+main {
+  flex: 1;
+}
+
+.placeholder-container {
+    height: 100%;
+    display: grid;
+    grid-template: 1fr / 1fr;
+    place-items: center;
+}
+
+.placeholder-text {
+    position: absolute;
+    text-align: center;
+    color: var(--primary-dark);
+    font-size: 2rem;
+}
