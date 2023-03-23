@@ -88,18 +88,40 @@ footer p {
 
 main {
   flex: 1;
+  position: relative;
 }
 
 .placeholder-container {
-    height: 100%;
-    display: grid;
-    grid-template: 1fr / 1fr;
-    place-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
 }
 
 .placeholder-text {
-    position: absolute;
-    text-align: center;
-    color: var(--primary-dark);
-    font-size: 2rem;
+  margin: auto;
+  text-align: center;
+  color: var(--primary-dark);
+  font-size: 2rem;
 }
+
+#books-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  background-color: red;
+}
+
+/* position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  background-color: var(--grey);
+  text-align: center;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease-in-out; */

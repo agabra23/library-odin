@@ -37,6 +37,40 @@
         Copyright &copy; <span id="year"></span> Andrew Gabra
       </p>
     </footer>
+    <div class="modal" id="addBookModal">
+      <form action="#" class="add-book-form" id="addBookForm">
+        <h3>Add New Book</h3>
+        <input
+          type="text"
+          class="form-input"
+          id="title"
+          placeholder="Title"
+          required
+          maxlength="100"
+        />
+        <input
+          type="text"
+          class="form-input"
+          id="author"
+          placeholder="Author"
+          required
+          maxlength="100"
+        />
+        <input
+          type="number"
+          class="form-input"
+          id="pages"
+          placeholder="# of Pages"
+          required
+          maxlength="10000"
+        />
+        <div class="is-read-container">
+          <label for="is-read">Finished?</label>
+          <input type="checkbox" class="checkbox" id="is-read" />
+        </div>
+        <button type="submit" class="form-submit-btn btn">Submit</button>
+      </form>
+    </div>
   </body>
   <script src="./app.js"></script>
 </html>
