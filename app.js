@@ -86,4 +86,27 @@ function createBookCard(book) {
   btnContainer.classList.add("btnContainer");
   readBtn.classList.add("readBtn", "cardBtn");
   removeBtn.classList.add("removeBtn", "cardBtn");
+  readBtn.onlclick = toggleRead;
+  removeBtn.onclick = removeBook;
+
+  bookTitle.textContent = `${book.title}`;
+  bookAuthor.textContent = book.author;
+  bookPages.textContent = `${book.pages} Pages`;
+  removeBtn.textContent = "Remove";
+
+  if (book.haveRead) {
+    readBtn.classList.add("hasRead");
+    readBtn.textContent = "Read";
+  } else {
+    readBtn.classList.add("hasNotRead");
+    readBtn.textContent = "Not Read";
+  }
+
+  cardContainer.appendChild(bookTitle);
+  cardContainer.appendChild(bookAuthor);
+  cardContainer.appendChild(bookPages);
+  btnContainer.appendChild(readBtn);
+  btnContainer.appendChild(removeBtn);
+  cardContainer.appendChild(btnContainer);
+  booksGrid.appendChild(cardContainer);
 }
