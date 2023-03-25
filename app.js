@@ -6,6 +6,20 @@ year.innerHTML = currentYear;
 
 // Objects
 
+class Book {
+  constructor(
+    title = "Unknown",
+    author = "Unknown",
+    pages = 0,
+    haveRead = false
+  ) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.haveRead = haveRead;
+  }
+}
+
 class Library {
   constructor() {
     this.books = [];
@@ -32,32 +46,28 @@ class Library {
   }
 }
 
-class Book {
-  constructor(
-    title = "Unknown",
-    author = "Unknown",
-    pages = 0,
-    haveRead = false
-  ) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.haveRead = haveRead;
-  }
-}
-
-function Book(title, author, numberOfPages, haveRead) {
-  this.title = title;
-  this.author = author;
-  this.numberOfPages = numberOfPages;
-  this.haveRead = haveRead;
-}
-
 const library = new Library();
 
 // UI
 
+const addBookBtn = document.getElementById("addBookBtn");
+const addBookModal = document.getElementById("addBookModal");
+const addBookForm = document.getElementById("addBookForm");
 const booksGrid = document.getElementById("books-grid");
+const placeholderSection = document.getElementById("placeholder-container");
+
+// Modal
+
+function openAddBookModal() {
+  addBookForm.reset();
+  addBookModal.classList.add("active");
+  placeholderSection.style.visibility = "hidden";
+}
+
+function closeAddBookModal() {
+  addBookModal.classList.remove("active");
+  placeholderSection.style.visibility = "visible";
+}
 
 function resetBooksGrid() {
   booksGrid.innerHTML = "";
@@ -110,3 +120,39 @@ function createBookCard(book) {
   cardContainer.appendChild(btnContainer);
   booksGrid.appendChild(cardContainer);
 }
+
+function getBookFromForm() {
+  const title = document.getElementById("title");
+  const author = document.getElementById("author");
+  const pages = document.getElementById("pages");
+  const isRead = document.getElementById("is-read");
+  return new Book(title, author, pages, isRead);
+}
+
+const addBook = (e) => {
+  e.preventDefault();
+  const newBook = getBookFromForm();
+
+  if (library.inLibrary(newBook)) {
+    alert("Already in library");
+    return;
+  }
+
+  library.addBook(newBook);
+  updateBooksGrid();
+  closeAddBookModal;
+};
+
+const removeBook = (e) => {
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll(
+    "",
+    ""
+  );
+};
+
+addBookBtn.onclick = openAddBookModal;
+addBookForm.onsubmit = addBook;
+
+const testBook = new Book("test title", "test author", 100, true);
+
+createBookCard(testBook);

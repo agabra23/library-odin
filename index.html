@@ -12,6 +12,7 @@
       <h1>Library</h1>
       <svg
         class="plus-button"
+        id="addBookBtn"
         fill="currentColor"
         style="width: 4rem"
         xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +26,7 @@
       </svg>
     </header>
     <main>
-      <div class="placeholder-container">
+      <div class="placeholder-container" id="placeholder-container">
         <p class="placeholder-text" id="placeholder-text">
           Click the "+" button to add a book to your library.
         </p>
@@ -39,7 +40,7 @@
     </footer>
     <div class="modal" id="addBookModal">
       <form action="#" class="add-book-form" id="addBookForm">
-        <h3>Add New Book</h3>
+        <h3 class="form-title">Add New Book</h3>
         <input
           type="text"
           class="form-input"
