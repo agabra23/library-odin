@@ -121,7 +121,7 @@ main {
   left: 50%;
   width: 300px;
   border-radius: 1rem;
-  background-color: var(--secondary-light);
+  background-color: var(--purple-700);
   text-align: center;
   transform: translate(-50%, -50%) scale(0);
   transition: 0.2s ease-in-out;
@@ -129,8 +129,14 @@ main {
 }
 
 .form-title {
-  color: var(--primary-dark);
+  color: var(--primary-light);
   font-size: 2.5rem;
+}
+
+label {
+  font-size: 1.5rem;
+  vertical-align: middle;
+  color: var(--primary-light);
 }
 
 .modal.active {
@@ -169,6 +175,10 @@ input {
 input[type="checkbox"] {
   width: 2rem;
   height: 2rem;
+  vertical-align: middle;
+  position: relative;
+  bottom: 0px;
+  margin-left: 1rem;
 }
 
 /* position: fixed;
