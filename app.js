@@ -159,6 +159,8 @@ addBookForm.onsubmit = addBook;
 
 const testBook = new Book("test title", "test author", 100, true);
 const testBook2 = new Book("test title", "test author", 100, true);
+const testBook3 = new Book("test title", "test author", 100, true);
 
 createBookCard(testBook);
 createBookCard(testBook2);
+createBookCard(testBook3);

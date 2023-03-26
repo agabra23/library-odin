@@ -201,8 +201,8 @@ input[type="checkbox"] {
 
 #books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: start;
   gap: 4rem;
   align-items: start;
   padding: 2rem;
@@ -214,11 +214,27 @@ input[type="checkbox"] {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  gap: 3rem;
+  gap: 2rem;
   font-size: 2rem;
-  padding: 2rem;
+  padding: 3rem;
   background-color: var(--purple-700);
   border-radius: 2rem;
-  width: 300px;
-  height: 400px;
+  color: var(--primary-light);
+}
+
+.bookTitle,
+.bookAuthor,
+.bookPages {
+  font-weight: 600;
+  border-bottom: 1px solid var(--primary-light);
+  padding-bottom: 1.5rem;
+  width: 95%;
+}
+
+.readBtn,
+.removeBtn {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  width: 10rem;
+  margin: 1rem;
 }
