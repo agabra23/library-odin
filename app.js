@@ -55,6 +55,7 @@ const addBookModal = document.getElementById("addBookModal");
 const addBookForm = document.getElementById("addBookForm");
 const booksGrid = document.getElementById("books-grid");
 const placeholderSection = document.getElementById("placeholder-container");
+const closeModalBtn = document.getElementById("modal-close-btn");
 
 // Modal
 
@@ -96,7 +97,7 @@ function createBookCard(book) {
   btnContainer.classList.add("btnContainer");
   readBtn.classList.add("readBtn", "cardBtn");
   removeBtn.classList.add("removeBtn", "cardBtn");
-  readBtn.onlclick = toggleRead;
+  // readBtn.onlclick = toggleRead;
   removeBtn.onclick = removeBook;
 
   bookTitle.textContent = `${book.title}`;
@@ -151,8 +152,13 @@ const removeBook = (e) => {
 };
 
 addBookBtn.onclick = openAddBookModal;
+closeModalBtn.onclick = () => {
+  closeAddBookModal();
+};
 addBookForm.onsubmit = addBook;
 
 const testBook = new Book("test title", "test author", 100, true);
+const testBook2 = new Book("test title", "test author", 100, true);
 
 createBookCard(testBook);
+createBookCard(testBook2);
