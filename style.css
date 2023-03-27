@@ -178,7 +178,7 @@ input {
   background-color: inherit;
   border: 1px solid var(--primary-light);
   border-radius: 1rem;
-  color: var(--purple-700);
+  color: var(--primary-light);
   transition: all 0.25s ease-in-out;
 }
 
