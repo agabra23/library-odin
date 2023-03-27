@@ -32,9 +32,8 @@ class Library {
   }
 
   removeBook(title) {
-    this.books = this.books.filter((book) => {
-      book.title !== title;
-    });
+    this.books = this.books.filter((book) => book.title !== title);
+    console.log(this.books);
   }
 
   getBook(title) {
@@ -77,6 +76,7 @@ function resetBooksGrid() {
 function updateBooksGrid() {
   resetBooksGrid();
   for (let book of library.books) {
+    console.log(book);
     createBookCard(book);
   }
 
@@ -173,7 +173,10 @@ const addBook = (e) => {
 };
 
 const removeBook = (e) => {
-  const title = e.target.parentNode.parentNode.firstChild.innerHTML;
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll(
+    "",
+    ""
+  );
 
   library.removeBook(title);
   updateBooksGrid();
