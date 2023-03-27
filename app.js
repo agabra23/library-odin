@@ -79,6 +79,9 @@ function closeAddBookModal() {
   addBookModal.classList.remove("active");
   togglePlaceholder();
   overlay.classList.remove("active");
+  if (errorMsg.parentNode !== null) {
+    errorMsg.parentNode.removeChild(errorMsg);
+  }
 }
 
 function resetBooksGrid() {
@@ -181,9 +184,6 @@ const addBook = (e) => {
   if (library.inLibrary(newBook)) {
     displayError();
     return;
-  }
-  if (errorMsg.parentNode !== null) {
-    errorMsg.parentNode.removeChild(errorMsg);
   }
   library.addBook(newBook);
   console.log(library);
