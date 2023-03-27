@@ -55,6 +55,7 @@ const addBookForm = document.getElementById("addBookForm");
 const booksGrid = document.getElementById("books-grid");
 const placeholderSection = document.getElementById("placeholder-container");
 const closeModalBtn = document.getElementById("modal-close-btn");
+const overlay = document.getElementById("overlay");
 
 // Modal
 
@@ -62,11 +63,13 @@ function openAddBookModal() {
   addBookForm.reset();
   addBookModal.classList.add("active");
   placeholderSection.style.visibility = "hidden";
+  overlay.classList.add("active");
 }
 
 function closeAddBookModal() {
   addBookModal.classList.remove("active");
   togglePlaceholder();
+  overlay.classList.remove("active");
 }
 
 function resetBooksGrid() {
@@ -183,6 +186,7 @@ const removeBook = (e) => {
 };
 
 addBookBtn.onclick = openAddBookModal;
+overlay.onclick = closeAddBookModal;
 
 closeModalBtn.onclick = () => {
   closeAddBookModal();

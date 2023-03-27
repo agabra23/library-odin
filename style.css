@@ -58,6 +58,7 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.5rem;
   color: var(--primary-light);
+  flex: 1;
 }
 
 #io {
@@ -71,8 +72,7 @@ h1 {
 
 .header {
   box-shadow: var(--shadow);
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
@@ -97,6 +97,7 @@ main {
   flex: 1;
   position: relative;
   background-color: var(--primary-light);
+  padding: 2rem;
 }
 
 .placeholder-container {
@@ -170,6 +171,18 @@ label {
   transition: all 0.25s ease-in-out;
   font-size: 1.75rem;
   border: 2px solid var(--purple-700);
+}
+
+#clearAll {
+  border-color: var(--primary-light);
+  background-color: inherit;
+  color: var(--primary-light);
+  font-size: 1.5rem;
+  margin-right: 2rem;
+}
+
+#clearAll:hover {
+  box-shadow: 0 0px 25px rgba(238, 238, 238, 0.3);
 }
 
 input {
@@ -295,4 +308,20 @@ input[type="checkbox"] {
   background-color: var(--primary-light);
   color: var(--toggle-green);
   border-color: var(--toggle-green);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(128, 128, 128);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay.active {
+  opacity: 50%;
+  pointer-events: all;
 }
