@@ -97,7 +97,7 @@ function createBookCard(book) {
   btnContainer.classList.add("btnContainer");
   readBtn.classList.add("readBtn", "cardBtn");
   removeBtn.classList.add("removeBtn", "cardBtn");
-  // readBtn.onlclick = toggleRead;
+  readBtn.onclick = toggleRead;
   removeBtn.onclick = removeBook;
 
   bookTitle.textContent = `${book.title}`;
@@ -106,10 +106,10 @@ function createBookCard(book) {
   removeBtn.textContent = "Remove";
 
   if (book.haveRead) {
-    readBtn.classList.add("hasRead");
+    readBtn.classList.add("readTrue");
     readBtn.textContent = "Read";
   } else {
-    readBtn.classList.add("hasNotRead");
+    readBtn.classList.remove("readTrue");
     readBtn.textContent = "Not Read";
   }
 
@@ -129,6 +129,16 @@ function getBookFromForm() {
   const isRead = document.getElementById("is-read");
   return new Book(title, author, pages, isRead);
 }
+
+const toggleRead = (e) => {
+  if (e.target.classList.contains("readTrue")) {
+    e.target.classList.remove("readTrue");
+    e.target.textContent = "Not Read";
+  } else {
+    e.target.classList.add("readTrue");
+    e.target.textContent = "Read";
+  }
+};
 
 const addBook = (e) => {
   e.preventDefault();

@@ -10,6 +10,7 @@
   --primary-dark: #333;
   --primary-light: #eee;
   --secondary-light: #dedede;
+  --toggle-green: rgb(110, 212, 110);
 }
 
 *,
@@ -99,6 +100,7 @@ main {
   display: grid;
   grid-template: 1fr / 1fr;
   place-items: center;
+  pointer-events: none;
 }
 
 .placeholder-text {
@@ -230,13 +232,32 @@ input[type="checkbox"] {
   border-bottom: 1px solid var(--purple-700);
   padding-bottom: 1.5rem;
   width: 95%;
+  color: var(--purple-500);
 }
 
-.readBtn,
-.removeBtn {
+.cardBtn {
   padding: 1rem 2rem;
   border-radius: 1rem;
   width: 10rem;
   margin: 1rem;
-  color: var(--purple-700);
+  color: var(--purple-500);
+  border: 2px solid var(--purple-500);
+  font-size: 1.32rem;
+  text-align: center;
+  font-weight: 500;
+  background-color: var(--primary-light);
+  transition: all 0.25s;
+}
+
+.cardBtn:hover {
+  background-color: var(--purple-500);
+  border: 2px solid var(--purple-700);
+  color: var(--primary-light);
+  cursor: pointer;
+}
+
+.readTrue {
+  background-color: var(--primary-light);
+  color: var(--toggle-green);
+  border-color: var(--toggle-green);
 }
