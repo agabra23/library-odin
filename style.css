@@ -11,6 +11,7 @@
   --primary-light: #eee;
   --secondary-light: #dedede;
   --toggle-green: rgb(110, 212, 110);
+  --shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 *,
@@ -64,20 +65,21 @@ h1 {
   cursor: pointer;
 }
 
-header {
+.header {
+  box-shadow: var(--shadow);
   display: grid;
   grid-auto-flow: column;
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
   background-color: var(--purple-500);
-  box-shadow: 0 5px 10px 3px rgb(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10;
 }
 
 footer {
   background-color: var(--primary-light);
   padding: 3rem;
-  box-shadow: 0 5px 10px 3px rgb(0, 0, 0, 0.15);
 }
 
 footer p {
@@ -161,22 +163,41 @@ label {
 .btn {
   padding: 1rem 2rem;
   border-radius: 1rem;
-  transition: filter 0.15s ease-in-out;
+  transition: all 0.25s ease-in-out;
   font-size: 1.75rem;
   border: 2px solid var(--purple-700);
 }
 
 input {
   padding: 1rem 2rem;
-  border-radius: 1rem;
   font-size: 1.75rem;
-  background-color: var(--primary-light);
+  background-color: inherit;
+  border: 1px solid var(--primary-light);
+  border-radius: 1rem;
+  color: var(--purple-700);
+  transition: all 0.25s ease-in-out;
+}
+
+input::placeholder {
+  color: #d1d1d1;
+  font-weight: 100;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus {
   appearance: none;
   outline: none;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  font-size: 1.75rem;
+  background-color: var(--primary-light);
+  color: var(--purple-700);
+  box-shadow: 0 0px 25px rgba(238, 238, 238, 0.3);
+}
+
+input[type="text"]:focus::placeholder,
+input[type="number"]:focus::placeholder {
+  color: #3600b3c1;
 }
 
 .btn:hover {
@@ -184,6 +205,14 @@ input[type="number"]:focus {
   cursor: pointer;
   color: var(--primary-light);
   border: 2px solid var(--primary-light);
+}
+
+.form-submit-btn {
+  color: var(--purple-700);
+}
+
+.form-submit-btn:hover {
+  box-shadow: 0 0px 25px rgba(238, 238, 238, 0.3);
 }
 
 .plus-button:hover {
@@ -223,6 +252,7 @@ input[type="checkbox"] {
   border: 2px solid var(--purple-700);
   border-radius: 2rem;
   color: var(--purple-700);
+  box-shadow: var(--shadow);
 }
 
 .bookTitle,
@@ -250,10 +280,11 @@ input[type="checkbox"] {
 }
 
 .cardBtn:hover {
-  background-color: var(--purple-500);
   border: 2px solid var(--purple-700);
   color: var(--primary-light);
   cursor: pointer;
+  background-color: var(--purple-700);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .readTrue {

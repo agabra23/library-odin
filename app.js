@@ -26,7 +26,7 @@ class Library {
   }
 
   addBook(newBook) {
-    if (this.inLibrary(newBook)) {
+    if (!this.inLibrary(newBook)) {
       this.books.push(newBook);
     }
   }
@@ -67,7 +67,7 @@ function openAddBookModal() {
 
 function closeAddBookModal() {
   addBookModal.classList.remove("active");
-  placeholderSection.style.visibility = "visible";
+  togglePlaceholder();
 }
 
 function resetBooksGrid() {
@@ -78,6 +78,18 @@ function updateBooksGrid() {
   resetBooksGrid();
   for (let book of library.books) {
     createBookCard(book);
+  }
+
+  if (library.books.length === 0) togglePlaceholder();
+}
+
+function togglePlaceholder() {
+  if (library.books.length > 0) {
+    placeholderSection.style.visibility = "hidden";
+  } else if (placeholderSection.style.visibility === "hidden") {
+    placeholderSection.style.visibility = "visible";
+  } else if (placeholderSection.style.visibility === "visible") {
+    placeholderSection.style.visibility = "hidden";
   }
 }
 
@@ -123,10 +135,15 @@ function createBookCard(book) {
 }
 
 function getBookFromForm() {
-  const title = document.getElementById("title");
-  const author = document.getElementById("author");
-  const pages = document.getElementById("pages");
-  const isRead = document.getElementById("is-read");
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const isReadNode = document.getElementById("is-read");
+  let isRead = false;
+  if (isReadNode.checked == true) {
+    isRead = true;
+  }
+
   return new Book(title, author, pages, isRead);
 }
 
@@ -143,34 +160,37 @@ const toggleRead = (e) => {
 const addBook = (e) => {
   e.preventDefault();
   const newBook = getBookFromForm();
-
+  console.log(newBook);
   if (library.inLibrary(newBook)) {
     alert("Already in library");
     return;
   }
 
   library.addBook(newBook);
+  console.log(library);
   updateBooksGrid();
-  closeAddBookModal;
+  closeAddBookModal();
 };
 
 const removeBook = (e) => {
-  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll(
-    "",
-    ""
-  );
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML;
+
+  library.removeBook(title);
+  updateBooksGrid();
 };
 
 addBookBtn.onclick = openAddBookModal;
+
 closeModalBtn.onclick = () => {
   closeAddBookModal();
 };
+
 addBookForm.onsubmit = addBook;
 
-const testBook = new Book("test title", "test author", 100, true);
-const testBook2 = new Book("test title", "test author", 100, true);
-const testBook3 = new Book("test title", "test author", 100, true);
+// const testBook = new Book("test title1", "test author", 100, true);
+// const testBook2 = new Book("test title2", "test author", 100, true);
+// const testBook3 = new Book("test title3", "test author", 100, true);
 
-createBookCard(testBook);
-createBookCard(testBook2);
-createBookCard(testBook3);
+// createBookCard(testBook);
+// createBookCard(testBook2);
+// createBookCard(testBook3);
