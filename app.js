@@ -36,6 +36,10 @@ class Library {
     console.log(this.books);
   }
 
+  clearBooks() {
+    this.books = [];
+  }
+
   getBook(title) {
     return this.books.find((book) => book.title === title);
   }
@@ -56,6 +60,11 @@ const booksGrid = document.getElementById("books-grid");
 const placeholderSection = document.getElementById("placeholder-container");
 const closeModalBtn = document.getElementById("modal-close-btn");
 const overlay = document.getElementById("overlay");
+const clearAllBtn = document.getElementById("clearAll");
+
+const errorMsg = document.createElement("p");
+errorMsg.classList.add("errorMsg");
+errorMsg.innerHTML = "";
 
 // Modal
 
@@ -89,10 +98,8 @@ function updateBooksGrid() {
 function togglePlaceholder() {
   if (library.books.length > 0) {
     placeholderSection.style.visibility = "hidden";
-  } else if (placeholderSection.style.visibility === "hidden") {
+  } else {
     placeholderSection.style.visibility = "visible";
-  } else if (placeholderSection.style.visibility === "visible") {
-    placeholderSection.style.visibility = "hidden";
   }
 }
 
@@ -137,6 +144,13 @@ function createBookCard(book) {
   booksGrid.appendChild(cardContainer);
 }
 
+function displayError() {
+  errorMsg.innerHTML = "Book already exists.";
+  const formNode = document.getElementById("addBookForm");
+
+  addBookModal.insertBefore(errorMsg, formNode);
+}
+
 function getBookFromForm() {
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
@@ -165,10 +179,12 @@ const addBook = (e) => {
   const newBook = getBookFromForm();
   console.log(newBook);
   if (library.inLibrary(newBook)) {
-    alert("Already in library");
+    displayError();
     return;
   }
-
+  if (errorMsg.parentNode !== null) {
+    errorMsg.parentNode.removeChild(errorMsg);
+  }
   library.addBook(newBook);
   console.log(library);
   updateBooksGrid();
@@ -187,9 +203,13 @@ const removeBook = (e) => {
 
 addBookBtn.onclick = openAddBookModal;
 overlay.onclick = closeAddBookModal;
-
 closeModalBtn.onclick = () => {
   closeAddBookModal();
+};
+clearAllBtn.onclick = () => {
+  resetBooksGrid();
+  library.clearBooks();
+  placeholderSection.style.visibility = "visible";
 };
 
 addBookForm.onsubmit = addBook;

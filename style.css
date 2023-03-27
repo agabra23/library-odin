@@ -154,6 +154,10 @@ label {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.form-title {
+  margin-bottom: 2rem;
+}
+
 .add-book-form {
   display: flex;
   flex-direction: column;
@@ -324,4 +328,11 @@ input[type="checkbox"] {
 .overlay.active {
   opacity: 50%;
   pointer-events: all;
+}
+
+.errorMsg {
+  color: red;
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
 }
