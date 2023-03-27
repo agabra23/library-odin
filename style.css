@@ -56,8 +56,12 @@ h1 {
   font-size: 4rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.5rem;
   color: var(--primary-light);
+}
+
+#io {
+  text-transform: lowercase;
 }
 
 .plus-button {
